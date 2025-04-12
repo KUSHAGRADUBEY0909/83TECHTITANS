@@ -20,7 +20,7 @@ df = load_data()
 index = load_faiss_index()
 model = load_model()
 
-st.title("🔍 Find My Fund – AI-Powered Lookup")
+st.title("Find My Fund – AI-Powered Lookup")
 query = st.text_input("Enter your fund query (even with typos or full sentences):")
 
 if query:
@@ -33,10 +33,10 @@ if query:
     results["Final Score"] = 0.5 * (1 - results["Semantic Score"]) + 0.5 * results["Fuzzy Score"]
     results = results.sort_values("Final Score", ascending=False).reset_index(drop=True)
 
-    st.subheader("🔝 Most Relevant Match")
+    st.subheader("Most Relevant Match")
     st.dataframe(results.iloc[:1][["schemeName", "amcName", "category", "Final Score"]])
 
-    st.subheader("✅ Top 5 Alternatives")
+    st.subheader(" Top 5 Alternatives")
     st.dataframe(results.iloc[1:6][["schemeName", "amcName", "category", "Final Score"]])
 
     st.subheader("📊 Top 10 Broader Matches")
