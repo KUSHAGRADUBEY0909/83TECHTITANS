@@ -3,16 +3,16 @@ from sentence_transformers import SentenceTransformer
 import numpy as np
 
 def generate_embeddings():
-    print("🧠 Loading model...")
+    print(" Loading model...")
     model = SentenceTransformer("all-MiniLM-L6-v2")
 
-    print("🔄 Loading cleaned data...")
+    print(" Loading cleaned data...")
     df = pd.read_pickle("clean_funds.pkl")
 
-    print("🔍 Creating embedding text...")
+    print(" Creating embedding text...")
     df["combined_text"] = df["schemeName"] + " | " + df["amcName"] + " | " + df["category"] + " > " + df["subCategory"] + " | " + df["objective"]
 
-    print("⚡ Generating embeddings...")
+    print(" Generating embeddings...")
     embeddings = model.encode(df["combined_text"].tolist(), batch_size=32, convert_to_numpy=True)
 
     df["embedding"] = list(embeddings)
