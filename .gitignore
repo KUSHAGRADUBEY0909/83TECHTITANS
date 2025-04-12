@@ -1,0 +1,6 @@
+echo venv/ > .gitignore
+echo __pycache__/ >> .gitignore
+echo *.pkl >> .gitignore
+echo *.faiss >> .gitignore
+echo test_results.xlsx >> .gitignore
+echo Dataset\ Queries-Securities\ for\ Model\ Creation.xlsx >> .gitignore
